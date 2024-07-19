@@ -114,7 +114,7 @@ if __name__ == '__main__':
     fptr.close()
 ```
 
-## A Very Big Sum
+## 4. A Very Big Sum
 
 In this challenge, you are required to calculate and print the sum of the elements in an array, keeping in mind that some of those integers may be quite large.
 
@@ -146,4 +146,138 @@ if __name__ == '__main__':
     fptr.write(str(result) + '\n')
 
     fptr.close()
+```
+
+## 5. Diagonal Difference
+
+Given a square matrix, calculate the absolute difference between the sums of its diagonals.
+
+For example, the square matrix `arr`  is shown below:
+
+```python
+1 2 3
+4 5 6
+9 8 9 
+```
+The left-to-right diagonal = `1+5+9 = 15`. The right to left diagonal = `3+5+9 = 17`. Their absolute difference is `|15-17| = 2`.
+
+**Function description**
+
+Complete the  function in the editor below.
+
+diagonalDifference takes the following parameter:
+
+int arr[n][m]: an array of integers
+Return
+
+int: the absolute diagonal difference
+
+```python
+def diagonalDifference(arr):
+    first_d = 0
+    second_d = 0
+    n = len(arr)
+    for i in range(n):
+        first_d += arr[i][i]
+        second_d += arr[i][n - 1 - i]
+    return abs(first_d-second_d)
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    arr = []
+
+    for _ in range(n):
+        arr.append(list(map(int, input().rstrip().split())))
+
+    result = diagonalDifference(arr)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+```
+
+## 6. Plus Minus
+
+**Function Description**
+
+Complete the plusMinus function in the editor below.
+
+plusMinus has the following parameter(s):
+- int arr[n]: an array of integers
+
+**Print**
+Print the ratios of positive, negative and zero values in the array. Each value should be printed on a separate line with `6` digits after the decimal. The function should not return a value.
+
+```python
+def plusMinus(arr):
+    n = len(arr)
+    positive = 0
+    negative = 0
+    zeros = 0
+     
+    for num in arr:
+        if num > 0:
+            positive += 1
+        elif num == 0:
+            zeros += 1
+        else:
+            negative += 1
+    return [positive / n, negative /n, zeros / n]
+
+if __name__ == '__main__':    
+    n = int(input().strip())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    result = plusMinus(arr)
+    
+    print(f"{result[0]:.6f}")
+    print(f"{result[1]:.6f}")
+    print(f"{result[2]:.6f}")
+```
+
+## 7. Staircase
+
+Staircase detail
+
+This is a staircase of size :
+```
+   #
+  ##
+ ###
+####
+```
+Its base and height are both equal to . It is drawn using # symbols and spaces. The last line is not preceded by any spaces.
+
+Write a program that prints a staircase of size .
+
+**Function Description**
+
+Complete the staircase function in the editor below.
+
+staircase has the following parameter(s):
+
+- int n: an integer
+
+**Print**
+
+Print a staircase as described above.
+
+```python
+def staircase(n):
+    for i in range(1, n + 1):
+        for j in range(n - i):
+            print(' ', end='')
+        for k in range(i):
+            print('#', end='')
+        print()
+
+if __name__ == '__main__':
+    n = int(input().strip())
+
+    staircase(n)
+
 ```
